@@ -8,11 +8,29 @@
 </head>
 <body>
     
-    <button id="btn-tema" class="btn-tema" aria-label="Cambiar tema">☀️</button>
+    <!-- Botón de tema actualizado con iconos SVG minimalistas -->
+    <button id="btn-tema" class="btn-tema" aria-label="Cambiar tema">
+        <!-- Icono Luna (Visible en modo claro por defecto) -->
+        <svg id="icono-luna" class="icono-tema" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block;">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+        <!-- Icono Sol (Oculto por defecto, visible en modo oscuro) -->
+        <svg id="icono-sol" class="icono-tema" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+    </button>
 
     <div class="contenedor-principal">
         
-        <!-- Barra de navegación (Ahora flotante y elegante) -->
+        <!-- Barra de navegación -->
         <nav class="navegacion">
             <ul>
                 <li><a href="#inicio">¿Quién soy?</a></li>
@@ -29,9 +47,15 @@
                     <h1>Diego Barria</h1>
                 </header>
                 
-                <div class="info-box texto-justificado card-hover">
-                    <p>Soy estudiante de 4to semestre de Informática y Telecomunicaciones en <a href="https://www.duoc.cl/" target="_blank" class="enlace-duoc">DuocUC</a>. Mi aspiración es transformar problemas cotidianos en soluciones tecnológicas eficientes, diseñando lógicas sólidas y desarrollando software que aporte valor real y automatización al mundo laboral.</p>
-                    <a href="#proyectos" class="boton-acento">Conocer mis trabajos</a>
+                <div class="info-box card-hover inicio-flex">
+                    <div class="info-texto texto-justificado">
+                        <p>Soy estudiante de 4to semestre de Informática y Telecomunicaciones en <a href="https://www.duoc.cl/" target="_blank" class="enlace-duoc">DuocUC</a>. Mi aspiración es transformar problemas cotidianos en soluciones tecnológicas eficientes, diseñando lógicas sólidas y desarrollando software que aporte valor real y automatización al mundo laboral.</p>
+                        <a href="#proyectos" class="boton-acento">Conocer mis trabajos</a>
+                    </div>
+                    
+                    <div class="info-imagen">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIq9tpk1WUvB-FASZ0MRo1KsH-lDbyAmFTiY6CJV788AKA4ic_xdK13jCj&s=10" alt="Foto de perfil de Diego Barria" class="foto-perfil">
+                    </div>
                 </div>
             </section>
 
@@ -43,19 +67,16 @@
                     
                     <div class="proyecto-grid">
                         
-                        <!-- Caja 1: Descripción -->
                         <div class="caja-grid caja-desc card-hover">
                             <h3>Cuadratura Shell IA</h3>
                             <p>Sistema automatizado en Python diseñado para optimizar el cierre de caja en estaciones de servicio. Resuelve la pérdida de tiempo y los errores humanos al realizar el conteo manual de dinero, calculando de forma exacta los descuadres financieros entre el efectivo, tarjetas y aplicaciones.<br><br>
                             Para este proyecto diseñé toda la arquitectura lógica, el flujo de usuario y las reglas de validación, utilizando Inteligencia Artificial como herramienta de desarrollo para materializar el código bajo mis especificaciones exactas.</p>
                         </div>
 
-                        <!-- Caja 2: Imagen -->
                         <div class="caja-grid caja-img card-hover">
                             <img src="Shell.png" alt="Consola Cuadratura Shell IA">
                         </div>
 
-                        <!-- Caja 3: Tecnologías (Ahora en formato "Píldoras") -->
                         <div class="caja-grid caja-tech card-hover">
                             <p class="tech-titulo">Tecnologías y Enfoque</p>
                             <div class="tech-pills">
@@ -75,8 +96,8 @@
             </section>
 
             <!-- SECCIÓN 3: CONTACTO -->
-            <section id="contacto" class="seccion-pantalla">
-                <h2>Contáctame</h2>
+            <section id="contacto" class="seccion-pantalla seccion-contacto">
+                <h2 class="titulo-centrado">Contáctame</h2>
                 <div class="info-box caja-contacto card-hover">
                     
                     <a href="https://wa.me/56950834797" target="_blank" class="link-contacto">
@@ -102,19 +123,31 @@
                 </div>
             </section>
 
+            <!-- PIE DE PÁGINA -->
+            <footer class="pie-pagina">
+                <p>&copy; 2026 Diego Barria. Diseñado y desarrollado desde cero.</p>
+            </footer>
+
         </main>
     </div>
 
     <script>
         const btnTema = document.getElementById('btn-tema');
         const cuerpo = document.body;
+        const iconoSol = document.getElementById('icono-sol');
+        const iconoLuna = document.getElementById('icono-luna');
 
         btnTema.addEventListener('click', () => {
             cuerpo.classList.toggle('dark-mode');
+            
+            // Si tiene la clase dark-mode, mostramos el sol (para invitar al claro)
             if (cuerpo.classList.contains('dark-mode')) {
-                btnTema.textContent = '🌙';
+                iconoSol.style.display = 'block';
+                iconoLuna.style.display = 'none';
             } else {
-                btnTema.textContent = '☀️';
+                // Si está en claro, mostramos la luna (para invitar al oscuro)
+                iconoSol.style.display = 'none';
+                iconoLuna.style.display = 'block';
             }
         });
     </script>

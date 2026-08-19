@@ -6,17 +6,17 @@
     
     /* Variables de diseño moderno */
     --bg-app: var(--crema-palido);
-    --bg-card: #FFFFFF; /* Cajas blancas sobre fondo crema = elegancia */
+    --bg-card: #FFFFFF; 
     --texto-principal: var(--marron-profundo);
     --texto-secundario: #7A6966;
     
-    --sombra-card: 0 10px 30px rgba(89, 75, 72, 0.08); /* Sombra difuminada */
+    --sombra-card: 0 10px 30px rgba(89, 75, 72, 0.08); 
     --borde-card: 1px solid rgba(89, 75, 72, 0.05);
 }
 
 body.dark-mode {
-    --bg-app: #201A19; /* Un marrón más oscuro casi negro para el fondo */
-    --bg-card: #3A312F; /* Cajas color marrón profundo */
+    --bg-app: #201A19; 
+    --bg-card: #3A312F; 
     --texto-principal: var(--crema-palido);
     --texto-secundario: #D4C9B8;
     
@@ -42,6 +42,7 @@ body {
     transition: background-color 0.4s ease, color 0.4s ease; 
 }
 
+/* Modificado para soportar iconos SVG centrados */
 .btn-tema {
     position: fixed; 
     top: 2rem;
@@ -52,21 +53,31 @@ body {
     border-radius: 50%;
     width: 50px;
     height: 50px;
-    font-size: 1.5rem;
     cursor: pointer;
     z-index: 100; 
-    transition: transform 0.3s ease, background-color 0.4s ease;
+    transition: transform 0.3s ease, background-color 0.4s ease, color 0.4s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--texto-principal); /* El SVG hereda este color automáticamente */
 }
 
 .btn-tema:hover {
     transform: scale(1.1); 
+    color: var(--dorado); /* Al hacer hover el icono se vuelve dorado */
+}
+
+.icono-tema {
+    width: 24px;
+    height: 24px;
+    transition: all 0.3s ease;
 }
 
 .contenedor-principal {
     display: flex;
 }
 
-/* Navegación achicada y sin fondo diferenciado */
+/* Navegación */
 .navegacion {
     flex: 0 0 25%; 
     background-color: transparent;
@@ -100,7 +111,7 @@ body {
 
 .navegacion a:hover {
     color: var(--dorado);
-    transform: translateX(-5px); /* Pequeño movimiento al apuntar */
+    transform: translateX(-5px); 
 }
 
 .contenido-principal {
@@ -110,11 +121,14 @@ body {
 
 /* Secciones fluidas */
 .seccion-pantalla {
-    min-height: 100vh; 
-    padding: 6rem 4rem 6rem 0;
+    padding: 4rem 4rem 4rem 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+#inicio {
+     min-height: 90vh;
 }
 
 header h1 {
@@ -134,23 +148,68 @@ header h1 {
     position: relative;
 }
 
-/* === ESTILOS DE TARJETAS (MODERNAS) === */
+.titulo-centrado {
+    text-align: center;
+    width: 100%;
+    max-width: 650px; 
+}
+
+/* === ESTILOS DE TARJETAS === */
 .card-hover {
     background-color: var(--bg-card);
     border: var(--borde-card);
-    border-radius: 16px; /* Bordes suaves */
+    border-radius: 16px; 
     box-shadow: var(--sombra-card);
     transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.4s ease;
 }
 
 .card-hover:hover {
-    transform: translateY(-8px); /* Efecto de flotación */
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12); /* Sombra más amplia al flotar */
+    transform: translateY(-8px); 
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12); 
 }
 
+/* === SECCIÓN INICIO === */
 .info-box {
     padding: 3.5rem;
-    max-width: 650px;
+    max-width: 800px;
+}
+
+.inicio-flex {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 3rem; 
+    flex-wrap: wrap; 
+}
+
+.info-texto {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.info-imagen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: flex-start;
+    margin-top: 0.5rem;
+}
+
+.foto-perfil {
+    width: 180px;
+    height: 180px;
+    object-fit: cover; 
+    border-radius: 50%; 
+    border: 4px solid var(--dorado); 
+    box-shadow: var(--sombra-card);
+    transition: transform 0.3s ease;
+}
+
+.foto-perfil:hover {
+    transform: scale(1.05);
 }
 
 .texto-justificado p {
@@ -165,19 +224,20 @@ header h1 {
     color: var(--texto-principal);
 }
 
-/* Botones modernos */
+/* Botones */
 .boton-acento {
     display: inline-block;
     padding: 0.8rem 2.5rem;
     border: 2px solid var(--dorado); 
     color: var(--texto-principal); 
     background-color: transparent; 
-    border-radius: 30px; /* Botón curvo */
+    border-radius: 30px; 
     text-decoration: none;
     font-size: 1rem;
     font-weight: 600;
     transition: all 0.3s ease;
     cursor: pointer;
+    align-self: flex-start; 
 }
 
 .boton-acento:hover {
@@ -186,7 +246,7 @@ header h1 {
     transform: scale(1.05);
 }
 
-/* === DISEÑO GRID DE PROYECTOS === */
+/* === PROYECTOS === */
 .proyecto-contenedor-nuevo {
     display: flex;
     flex-direction: column;
@@ -218,7 +278,7 @@ header h1 {
 .caja-desc h3 {
     font-size: 2.2rem;
     font-weight: 700;
-    color: var(--dorado); /* Título del proyecto en dorado */
+    color: var(--dorado); 
     margin-bottom: 1.5rem;
 }
 
@@ -241,7 +301,6 @@ header h1 {
     border-radius: 8px;
 }
 
-/* --- ESTILO DE PÍLDORAS (NUEVO) --- */
 .caja-tech {
     grid-column: 2 / 3; 
     grid-row: 2 / 3; 
@@ -263,7 +322,7 @@ header h1 {
 }
 
 .pill {
-    background-color: rgba(207, 174, 118, 0.15); /* Fondo dorado translúcido */
+    background-color: rgba(207, 174, 118, 0.15); 
     color: var(--dorado);
     border: 1px solid var(--dorado);
     padding: 0.5rem 1.2rem;
@@ -296,10 +355,20 @@ header h1 {
     text-decoration: underline; 
 }
 
+.seccion-contacto {
+    align-items: center; 
+    padding-top: 2rem; 
+    padding-bottom: 2rem; 
+}
+
 .caja-contacto {
     display: flex;
     flex-direction: column;
     gap: 1.8rem; 
+    max-width: 650px;
+    width: 100%;
+    align-items: center; 
+    text-align: center;
 }
 
 .link-contacto {
@@ -309,17 +378,30 @@ header h1 {
     font-weight: 500;
     display: flex;
     align-items: center;
+    justify-content: center; 
     gap: 15px;
     transition: color 0.3s ease, transform 0.3s ease;
+    width: 100%;
 }
 
 .link-contacto:hover {
     color: var(--dorado); 
-    transform: translateX(10px); 
+    transform: translateY(-3px); 
 }
 
 .icono-svg {
     width: 32px;
     height: 32px;
     color: var(--dorado);
+}
+
+/* === PIE DE PÁGINA (FOOTER) === */
+.pie-pagina {
+    text-align: center;
+    padding: 1.5rem 0 2rem 0; 
+    color: var(--texto-secundario);
+    font-size: 0.95rem;
+    border-top: 1px solid var(--borde-card);
+    margin-top: 1rem; 
+    margin-right: 4rem; 
 }
