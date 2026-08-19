@@ -1,0 +1,330 @@
+/* Definición de la paleta y variables de color */
+:root {
+    --crema-palido: #F8F3EA; 
+    --marron-profundo: #594B48; 
+    --dorado: #CFAE76;        
+    
+    --bg-izq: var(--crema-palido);
+    --texto-izq: var(--marron-profundo);
+    
+    --bg-der: var(--marron-profundo);
+    --texto-der: var(--crema-palido);
+    
+    --color-borde: var(--crema-palido);
+    --bg-boton: var(--crema-palido);
+    --texto-boton: var(--marron-profundo);
+}
+
+body.dark-mode {
+    --bg-izq: #3A312F; 
+    --texto-izq: var(--crema-palido);
+    
+    --bg-der: #251F1E; 
+    --texto-der: var(--crema-palido);
+    
+    --color-borde: var(--dorado);
+    --bg-boton: transparent;
+    --texto-boton: var(--dorado);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden;
+    transition: background-color 0.4s ease, color 0.4s ease; 
+}
+
+.btn-tema {
+    position: fixed; 
+    top: 2rem;
+    left: 2rem;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 100; 
+    transition: transform 0.3s ease;
+}
+
+.btn-tema:hover {
+    transform: scale(1.1); 
+}
+
+.contenedor-principal {
+    display: flex;
+}
+
+.navegacion {
+    flex: 0 0 35%; 
+    background-color: var(--bg-izq);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; 
+    padding-right: 2rem;
+    transition: background-color 0.4s ease;
+    
+    position: sticky;
+    top: 0;
+    height: 100vh;
+}
+
+.navegacion ul {
+    list-style: none;
+    text-align: right;
+}
+
+.navegacion li {
+    margin-bottom: 2rem; 
+}
+
+.navegacion a {
+    text-decoration: none;
+    color: var(--texto-izq);
+    font-size: 1.5rem;
+    font-weight: 600;
+    position: relative; 
+    display: inline-block;
+    padding-bottom: 0.3rem;
+    transition: color 0.4s ease;
+}
+
+.navegacion a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 1px; 
+    background-color: var(--dorado); 
+    transition: width 0.3s ease;
+}
+
+.navegacion a:hover::after {
+    width: 100%; 
+}
+
+.contenido-principal {
+    flex: 1; 
+    background-color: var(--bg-der); 
+    transition: background-color 0.4s ease;
+}
+
+.seccion-pantalla {
+    min-height: 100vh; 
+    padding: 6rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+header h1 {
+    font-size: 4rem; 
+    color: var(--texto-der); 
+    font-weight: 300; 
+    letter-spacing: 0.1rem;
+    margin-bottom: 3rem;
+    transition: color 0.4s ease;
+}
+
+.seccion-pantalla h2 {
+    font-size: 3rem; 
+    color: var(--texto-der); 
+    font-weight: 300; 
+    letter-spacing: 0.1rem;
+    margin-bottom: 3rem;
+    transition: color 0.4s ease;
+}
+
+/* === TEXTO JUSTIFICADO === */
+.texto-justificado p {
+    text-align: justify;
+}
+
+.info-box {
+    border: 1px solid var(--color-borde); 
+    padding: 3rem;
+    max-width: 600px;
+    background-color: transparent; 
+    margin-left: 0.5rem; 
+    transition: border-color 0.4s ease;
+}
+
+.info-box p {
+    color: var(--texto-der); 
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+    transition: color 0.4s ease;
+}
+
+.boton-acento {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    border: 1px solid var(--color-borde); 
+    color: var(--texto-boton); 
+    background-color: var(--bg-boton); 
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: lowercase; 
+    letter-spacing: 0.05rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.boton-acento:hover {
+    background-color: var(--dorado); 
+    color: #251F1E; 
+    border-color: var(--dorado); 
+}
+
+
+/* === NUEVO DISEÑO GRID DE PROYECTOS === */
+
+.proyecto-contenedor-nuevo {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* Espacio entre el cuadro grande y el botón de github */
+    max-width: 1000px;
+    width: 100%;
+}
+
+.proyecto-grid {
+    display: grid;
+    /* Divide el espacio en dos columnas iguales */
+    grid-template-columns: 1fr 1fr;
+    /* Divide el espacio en dos filas, la imagen será más alta que la tecnología */
+    grid-template-rows: auto auto;
+    gap: 1.5rem; 
+}
+
+.caja-grid {
+    border: 1px solid var(--color-borde);
+    padding: 2rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: border-color 0.4s ease;
+}
+
+/* Caja de Descripción (Izquierda) */
+.caja-desc {
+    grid-column: 1 / 2; /* Ocupa la columna 1 */
+    grid-row: 1 / 3; /* Ocupa desde la fila 1 hasta la 3 (toda la altura izquierda) */
+    align-items: flex-start;
+}
+
+.caja-desc h3 {
+    font-size: 2rem;
+    font-weight: 400;
+    color: var(--texto-der);
+    margin-bottom: 1.5rem;
+    transition: color 0.4s ease;
+}
+
+.caja-desc p {
+    color: var(--texto-der);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    font-weight: 300;
+    text-align: justify; /* Justificamos también esta descripción larga */
+    transition: color 0.4s ease;
+}
+
+/* Caja de Imagen (Derecha Superior) */
+.caja-img {
+    grid-column: 2 / 3; /* Columna 2 */
+    grid-row: 1 / 2; /* Fila 1 */
+    align-items: center;
+    padding: 1.5rem;
+}
+
+.caja-img img {
+    max-width: 100%;
+    max-height: 250px; 
+    object-fit: contain;
+    border-radius: 4px;
+}
+
+/* Caja de Tecnologías (Derecha Inferior) */
+.caja-tech {
+    grid-column: 2 / 3; /* Columna 2 */
+    grid-row: 2 / 3; /* Fila 2 */
+    align-items: center;
+    text-align: center;
+}
+
+.caja-tech p {
+    color: var(--texto-der);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    font-weight: 300;
+}
+
+/* Contenedor del Botón GitHub */
+.caja-github {
+    display: flex;
+    justify-content: center;
+}
+
+.btn-github {
+    padding: 1rem 4rem; /* Hace el botón más ancho como en tu boceto */
+    font-size: 1rem;
+}
+
+
+/* === ESTILOS DE ENLACES Y CONTACTO === */
+
+.enlace-duoc {
+    color: var(--dorado); 
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 1px solid var(--dorado);
+    transition: opacity 0.3s ease;
+}
+
+.enlace-duoc:hover {
+    opacity: 0.7; 
+}
+
+.caja-contacto {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; 
+}
+
+.link-contacto {
+    color: var(--texto-der);
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.link-contacto span {
+    font-size: 1.5rem; 
+}
+
+.link-contacto:hover {
+    color: var(--dorado); 
+    transform: translateX(10px); 
+}
+
+.icono-svg {
+    width: 28px;
+    height: 28px;
+    transition: fill 0.3s ease;
+}
