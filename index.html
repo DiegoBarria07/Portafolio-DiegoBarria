@@ -8,15 +8,16 @@
 </head>
 <body>
     
-    <button id="btn-tema" class="btn-tema">☀️</button>
+    <button id="btn-tema" class="btn-tema" aria-label="Cambiar tema">☀️</button>
 
     <div class="contenedor-principal">
         
+        <!-- Barra de navegación (Ahora flotante y elegante) -->
         <nav class="navegacion">
             <ul>
                 <li><a href="#inicio">¿Quién soy?</a></li>
                 <li><a href="#proyectos">Proyectos</a></li>
-                <li><a href="#contacto">contactame</a></li>
+                <li><a href="#contacto">Contáctame</a></li>
             </ul>
         </nav>
 
@@ -28,9 +29,9 @@
                     <h1>Diego Barria</h1>
                 </header>
                 
-                <div class="info-box texto-justificado">
+                <div class="info-box texto-justificado card-hover">
                     <p>Soy estudiante de 4to semestre de Informática y Telecomunicaciones en <a href="https://www.duoc.cl/" target="_blank" class="enlace-duoc">DuocUC</a>. Mi aspiración es transformar problemas cotidianos en soluciones tecnológicas eficientes, diseñando lógicas sólidas y desarrollando software que aporte valor real y automatización al mundo laboral.</p>
-                    <a href="#proyectos" class="boton-acento">conocer mis trabajos</a>
+                    <a href="#proyectos" class="boton-acento">Conocer mis trabajos</a>
                 </div>
             </section>
 
@@ -40,31 +41,34 @@
                 
                 <div class="proyecto-contenedor-nuevo">
                     
-                    <!-- Cuadrícula del proyecto según tu boceto -->
                     <div class="proyecto-grid">
                         
-                        <!-- Caja 1: Descripción (Izquierda, alta) -->
-                        <div class="caja-grid caja-desc">
+                        <!-- Caja 1: Descripción -->
+                        <div class="caja-grid caja-desc card-hover">
                             <h3>Cuadratura Shell IA</h3>
                             <p>Sistema automatizado en Python diseñado para optimizar el cierre de caja en estaciones de servicio. Resuelve la pérdida de tiempo y los errores humanos al realizar el conteo manual de dinero, calculando de forma exacta los descuadres financieros entre el efectivo, tarjetas y aplicaciones.<br><br>
                             Para este proyecto diseñé toda la arquitectura lógica, el flujo de usuario y las reglas de validación, utilizando Inteligencia Artificial como herramienta de desarrollo para materializar el código bajo mis especificaciones exactas.</p>
                         </div>
 
-                        <!-- Caja 2: Imagen (Derecha, arriba) -->
-                        <div class="caja-grid caja-img">
+                        <!-- Caja 2: Imagen -->
+                        <div class="caja-grid caja-img card-hover">
                             <img src="Shell.png" alt="Consola Cuadratura Shell IA">
                         </div>
 
-                        <!-- Caja 3: Tecnologías (Derecha, abajo) -->
-                        <div class="caja-grid caja-tech">
-                            <p><strong>Tecnologías:</strong><br>Python, Lógica de Negocios, Prompt Engineering.</p>
+                        <!-- Caja 3: Tecnologías (Ahora en formato "Píldoras") -->
+                        <div class="caja-grid caja-tech card-hover">
+                            <p class="tech-titulo">Tecnologías y Enfoque</p>
+                            <div class="tech-pills">
+                                <span class="pill">Python</span>
+                                <span class="pill">Lógica de Negocios</span>
+                                <span class="pill">Prompt Engineering</span>
+                            </div>
                         </div>
 
                     </div>
                     
-                    <!-- Botón de GitHub (Abajo, centrado) -->
                     <div class="caja-github">
-                        <a href="https://github.com/DiegoBarria07/Cuadratura-Shell-IA.git" class="boton-acento btn-github" target="_blank">ver en github</a>
+                        <a href="https://github.com/DiegoBarria07/Cuadratura-Shell-IA.git" class="boton-acento btn-github" target="_blank">Ver repositorio en GitHub</a>
                     </div>
 
                 </div>
@@ -73,7 +77,7 @@
             <!-- SECCIÓN 3: CONTACTO -->
             <section id="contacto" class="seccion-pantalla">
                 <h2>Contáctame</h2>
-                <div class="info-box caja-contacto">
+                <div class="info-box caja-contacto card-hover">
                     
                     <a href="https://wa.me/56950834797" target="_blank" class="link-contacto">
                         <svg class="icono-svg" viewBox="0 0 24 24" fill="currentColor">

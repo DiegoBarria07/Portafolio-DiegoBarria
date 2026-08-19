@@ -4,27 +4,24 @@
     --marron-profundo: #594B48; 
     --dorado: #CFAE76;        
     
-    --bg-izq: var(--crema-palido);
-    --texto-izq: var(--marron-profundo);
+    /* Variables de diseño moderno */
+    --bg-app: var(--crema-palido);
+    --bg-card: #FFFFFF; /* Cajas blancas sobre fondo crema = elegancia */
+    --texto-principal: var(--marron-profundo);
+    --texto-secundario: #7A6966;
     
-    --bg-der: var(--marron-profundo);
-    --texto-der: var(--crema-palido);
-    
-    --color-borde: var(--crema-palido);
-    --bg-boton: var(--crema-palido);
-    --texto-boton: var(--marron-profundo);
+    --sombra-card: 0 10px 30px rgba(89, 75, 72, 0.08); /* Sombra difuminada */
+    --borde-card: 1px solid rgba(89, 75, 72, 0.05);
 }
 
 body.dark-mode {
-    --bg-izq: #3A312F; 
-    --texto-izq: var(--crema-palido);
+    --bg-app: #201A19; /* Un marrón más oscuro casi negro para el fondo */
+    --bg-card: #3A312F; /* Cajas color marrón profundo */
+    --texto-principal: var(--crema-palido);
+    --texto-secundario: #D4C9B8;
     
-    --bg-der: #251F1E; 
-    --texto-der: var(--crema-palido);
-    
-    --color-borde: var(--dorado);
-    --bg-boton: transparent;
-    --texto-boton: var(--dorado);
+    --sombra-card: 0 10px 30px rgba(0, 0, 0, 0.4);
+    --borde-card: 1px solid rgba(248, 243, 234, 0.05);
 }
 
 * {
@@ -39,6 +36,8 @@ html {
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-app);
+    color: var(--texto-principal);
     overflow-x: hidden;
     transition: background-color 0.4s ease, color 0.4s ease; 
 }
@@ -47,12 +46,16 @@ body {
     position: fixed; 
     top: 2rem;
     left: 2rem;
-    background: none;
-    border: none;
-    font-size: 2rem;
+    background: var(--bg-card);
+    border: var(--borde-card);
+    box-shadow: var(--sombra-card);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
     cursor: pointer;
     z-index: 100; 
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, background-color 0.4s ease;
 }
 
 .btn-tema:hover {
@@ -63,15 +66,14 @@ body {
     display: flex;
 }
 
+/* Navegación achicada y sin fondo diferenciado */
 .navegacion {
-    flex: 0 0 35%; 
-    background-color: var(--bg-izq);
+    flex: 0 0 25%; 
+    background-color: transparent;
     display: flex;
     align-items: center;
     justify-content: flex-end; 
-    padding-right: 2rem;
-    transition: background-color 0.4s ease;
-    
+    padding-right: 3rem;
     position: sticky;
     top: 0;
     height: 100vh;
@@ -83,239 +85,232 @@ body {
 }
 
 .navegacion li {
-    margin-bottom: 2rem; 
+    margin-bottom: 2.5rem; 
 }
 
 .navegacion a {
     text-decoration: none;
-    color: var(--texto-izq);
-    font-size: 1.5rem;
-    font-weight: 600;
+    color: var(--texto-secundario);
+    font-size: 1.3rem;
+    font-weight: 500;
     position: relative; 
+    transition: color 0.3s ease, transform 0.3s ease;
     display: inline-block;
-    padding-bottom: 0.3rem;
-    transition: color 0.4s ease;
 }
 
-.navegacion a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 0;
-    height: 1px; 
-    background-color: var(--dorado); 
-    transition: width 0.3s ease;
-}
-
-.navegacion a:hover::after {
-    width: 100%; 
+.navegacion a:hover {
+    color: var(--dorado);
+    transform: translateX(-5px); /* Pequeño movimiento al apuntar */
 }
 
 .contenido-principal {
     flex: 1; 
-    background-color: var(--bg-der); 
-    transition: background-color 0.4s ease;
+    padding-left: 2rem;
 }
 
+/* Secciones fluidas */
 .seccion-pantalla {
     min-height: 100vh; 
-    padding: 6rem;
+    padding: 6rem 4rem 6rem 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
 header h1 {
-    font-size: 4rem; 
-    color: var(--texto-der); 
-    font-weight: 300; 
-    letter-spacing: 0.1rem;
+    font-size: 4.5rem; 
+    color: var(--texto-principal); 
+    font-weight: 700; 
+    letter-spacing: -0.05rem;
     margin-bottom: 3rem;
     transition: color 0.4s ease;
 }
 
 .seccion-pantalla h2 {
-    font-size: 3rem; 
-    color: var(--texto-der); 
-    font-weight: 300; 
-    letter-spacing: 0.1rem;
-    margin-bottom: 3rem;
-    transition: color 0.4s ease;
+    font-size: 2.5rem; 
+    color: var(--texto-principal); 
+    font-weight: 600; 
+    margin-bottom: 2.5rem;
+    position: relative;
 }
 
-/* === TEXTO JUSTIFICADO === */
+/* === ESTILOS DE TARJETAS (MODERNAS) === */
+.card-hover {
+    background-color: var(--bg-card);
+    border: var(--borde-card);
+    border-radius: 16px; /* Bordes suaves */
+    box-shadow: var(--sombra-card);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.4s ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-8px); /* Efecto de flotación */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12); /* Sombra más amplia al flotar */
+}
+
+.info-box {
+    padding: 3.5rem;
+    max-width: 650px;
+}
+
 .texto-justificado p {
     text-align: justify;
 }
 
-.info-box {
-    border: 1px solid var(--color-borde); 
-    padding: 3rem;
-    max-width: 600px;
-    background-color: transparent; 
-    margin-left: 0.5rem; 
-    transition: border-color 0.4s ease;
-}
-
 .info-box p {
-    color: var(--texto-der); 
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     line-height: 1.8;
     margin-bottom: 2.5rem;
-    font-weight: 300;
-    transition: color 0.4s ease;
+    font-weight: 400;
+    color: var(--texto-principal);
 }
 
+/* Botones modernos */
 .boton-acento {
     display: inline-block;
-    padding: 0.8rem 2rem;
-    border: 1px solid var(--color-borde); 
-    color: var(--texto-boton); 
-    background-color: var(--bg-boton); 
+    padding: 0.8rem 2.5rem;
+    border: 2px solid var(--dorado); 
+    color: var(--texto-principal); 
+    background-color: transparent; 
+    border-radius: 30px; /* Botón curvo */
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 1rem;
     font-weight: 600;
-    text-transform: lowercase; 
-    letter-spacing: 0.05rem;
     transition: all 0.3s ease;
     cursor: pointer;
 }
 
 .boton-acento:hover {
     background-color: var(--dorado); 
-    color: #251F1E; 
-    border-color: var(--dorado); 
+    color: #201A19; 
+    transform: scale(1.05);
 }
 
-
-/* === NUEVO DISEÑO GRID DE PROYECTOS === */
-
+/* === DISEÑO GRID DE PROYECTOS === */
 .proyecto-contenedor-nuevo {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem; /* Espacio entre el cuadro grande y el botón de github */
+    gap: 2rem; 
     max-width: 1000px;
     width: 100%;
 }
 
 .proyecto-grid {
     display: grid;
-    /* Divide el espacio en dos columnas iguales */
     grid-template-columns: 1fr 1fr;
-    /* Divide el espacio en dos filas, la imagen será más alta que la tecnología */
     grid-template-rows: auto auto;
     gap: 1.5rem; 
 }
 
 .caja-grid {
-    border: 1px solid var(--color-borde);
-    padding: 2rem 2.5rem;
+    padding: 2.5rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    transition: border-color 0.4s ease;
 }
 
-/* Caja de Descripción (Izquierda) */
 .caja-desc {
-    grid-column: 1 / 2; /* Ocupa la columna 1 */
-    grid-row: 1 / 3; /* Ocupa desde la fila 1 hasta la 3 (toda la altura izquierda) */
+    grid-column: 1 / 2; 
+    grid-row: 1 / 3; 
     align-items: flex-start;
 }
 
 .caja-desc h3 {
-    font-size: 2rem;
-    font-weight: 400;
-    color: var(--texto-der);
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--dorado); /* Título del proyecto en dorado */
     margin-bottom: 1.5rem;
-    transition: color 0.4s ease;
 }
 
 .caja-desc p {
-    color: var(--texto-der);
     font-size: 1.1rem;
     line-height: 1.8;
-    font-weight: 300;
-    text-align: justify; /* Justificamos también esta descripción larga */
-    transition: color 0.4s ease;
+    text-align: justify; 
 }
 
-/* Caja de Imagen (Derecha Superior) */
 .caja-img {
-    grid-column: 2 / 3; /* Columna 2 */
-    grid-row: 1 / 2; /* Fila 1 */
+    grid-column: 2 / 3; 
+    grid-row: 1 / 2; 
     align-items: center;
-    padding: 1.5rem;
 }
 
 .caja-img img {
     max-width: 100%;
-    max-height: 250px; 
+    max-height: 260px; 
     object-fit: contain;
-    border-radius: 4px;
+    border-radius: 8px;
 }
 
-/* Caja de Tecnologías (Derecha Inferior) */
+/* --- ESTILO DE PÍLDORAS (NUEVO) --- */
 .caja-tech {
-    grid-column: 2 / 3; /* Columna 2 */
-    grid-row: 2 / 3; /* Fila 2 */
+    grid-column: 2 / 3; 
+    grid-row: 2 / 3; 
     align-items: center;
     text-align: center;
 }
 
-.caja-tech p {
-    color: var(--texto-der);
-    font-size: 1.1rem;
-    line-height: 1.6;
-    font-weight: 300;
+.tech-titulo {
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--texto-secundario);
 }
 
-/* Contenedor del Botón GitHub */
-.caja-github {
+.tech-pills {
     display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
     justify-content: center;
 }
 
-.btn-github {
-    padding: 1rem 4rem; /* Hace el botón más ancho como en tu boceto */
-    font-size: 1rem;
+.pill {
+    background-color: rgba(207, 174, 118, 0.15); /* Fondo dorado translúcido */
+    color: var(--dorado);
+    border: 1px solid var(--dorado);
+    padding: 0.5rem 1.2rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+.pill:hover {
+    background-color: var(--dorado);
+    color: #201A19;
+}
 
-/* === ESTILOS DE ENLACES Y CONTACTO === */
+.caja-github {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
 
+/* === ENLACES Y CONTACTO === */
 .enlace-duoc {
     color: var(--dorado); 
     text-decoration: none;
-    font-weight: 600;
-    border-bottom: 1px solid var(--dorado);
-    transition: opacity 0.3s ease;
+    font-weight: 700;
+    transition: color 0.3s ease;
 }
 
 .enlace-duoc:hover {
-    opacity: 0.7; 
+    text-decoration: underline; 
 }
 
 .caja-contacto {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem; 
+    gap: 1.8rem; 
 }
 
 .link-contacto {
-    color: var(--texto-der);
+    color: var(--texto-principal);
     text-decoration: none;
     font-size: 1.2rem;
-    font-weight: 300;
+    font-weight: 500;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
     transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.link-contacto span {
-    font-size: 1.5rem; 
 }
 
 .link-contacto:hover {
@@ -324,7 +319,7 @@ header h1 {
 }
 
 .icono-svg {
-    width: 28px;
-    height: 28px;
-    transition: fill 0.3s ease;
+    width: 32px;
+    height: 32px;
+    color: var(--dorado);
 }
