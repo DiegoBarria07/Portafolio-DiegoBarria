@@ -8,13 +8,13 @@
 </head>
 <body>
     
-    <!-- Botón de tema actualizado con iconos SVG minimalistas -->
+    <!-- Botón de tema -->
     <button id="btn-tema" class="btn-tema" aria-label="Cambiar tema">
-        <!-- Icono Luna (Visible en modo claro por defecto) -->
+        <!-- Icono Luna -->
         <svg id="icono-luna" class="icono-tema" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block;">
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
         </svg>
-        <!-- Icono Sol (Oculto por defecto, visible en modo oscuro) -->
+        <!-- Icono Sol -->
         <svg id="icono-sol" class="icono-tema" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
             <circle cx="12" cy="12" r="5"></circle>
             <line x1="12" y1="1" x2="12" y2="3"></line>
@@ -54,7 +54,7 @@
                     </div>
                     
                     <div class="info-imagen">
-                        <img src="Barria1.jpg" alt="Foto de perfil de Diego Barria" class="foto-perfil">
+                        <img src="z-Diego.png" alt="Foto de perfil de Diego Barria" class="foto-perfil">
                     </div>
                 </div>
             </section>
@@ -74,7 +74,7 @@
                         </div>
 
                         <div class="caja-grid caja-img card-hover">
-                            <img src="Shell.png" alt="Consola Cuadratura Shell IA">
+                            <img src="z-Shell.png" alt="Consola Cuadratura Shell IA">
                         </div>
 
                         <div class="caja-grid caja-tech card-hover">
@@ -131,25 +131,7 @@
         </main>
     </div>
 
-    <script>
-        const btnTema = document.getElementById('btn-tema');
-        const cuerpo = document.body;
-        const iconoSol = document.getElementById('icono-sol');
-        const iconoLuna = document.getElementById('icono-luna');
-
-        btnTema.addEventListener('click', () => {
-            cuerpo.classList.toggle('dark-mode');
-            
-            // Si tiene la clase dark-mode, mostramos el sol (para invitar al claro)
-            if (cuerpo.classList.contains('dark-mode')) {
-                iconoSol.style.display = 'block';
-                iconoLuna.style.display = 'none';
-            } else {
-                // Si está en claro, mostramos la luna (para invitar al oscuro)
-                iconoSol.style.display = 'none';
-                iconoLuna.style.display = 'block';
-            }
-        });
-    </script>
+    <!-- AQUÍ ESTÁ LA MAGIA: Conectamos tu nuevo archivo app.js -->
+    <script src="app.js"></script>
 </body>
 </html>
